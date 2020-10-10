@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>逐帧动画</title>
+        <style>
+          *{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: url('../task4/images/loading.png');
+			margin: 200px auto;
+			animation: jz 1s step-end infinite;
+		}
+		@keyframes jz{
+			0%{
+				background-position: 0 0;
+			}
+			12.5%{
+				background-position: -100% 0;
+			}
+			25%{
+				background-position: -200% 0;
+			}
+			37.5%{
+				background-position: -300% 0;
+			}
+			50%{
+				background-position: -400% 0;
+			}
+			62.5%{
+				background-position: -500% 0;
+			}
+			75%{
+				background-position: -600% 0;
+			}
+			87.5%{
+				background-position: -700% 0;
+			}
+			100%{
+				background-position: 0 0;
+			}
+		}
+		#jd{
+				width: 662px;
+				height: 681.5px;
+				background: url('../task4/images/jd.png');
+				margin: 200px auto;
+				animation: aa 2s step-end infinite;
+			}
+			@keyframes aa{
+				0%{
+					background-position: 0 0;
+				}
+				33%{
+					background-position: 0 -100%;
+				}
+				66%{
+					background-position: 0 -200%;
+				}
+				100%{
+					background-position: 0 0;
+				}
+			}
+			#kf{
+			width: 73px;
+			height: 119px;
+			background: url('../task4/images/hua.jpg');
+			margin: 200px auto;
+			animation: kk 2s step-end infinite;
+		}
+		@keyframes kk{
+			0%{
+				background-position: 0;
+			}
+			20%{
+				background-position: -100% 0;
+			}
+			40%{
+				background-position: -200% 0;
+			}
+			60%{
+				background-position: -300% 0;
+			}
+			80%{
+				background-position: -400% 0;
+			}
+			100%{
+				background-position: -500% 0;
+			}
+		}
+			#ww{
+			width: 180px;
+			height: 293px;
+			background: url('../task4/images/walk.jpg');
+			margin: 200px auto;
+			animation: walk 1s step-end infinite;
+		}
+		@keyframes walk{
+			0%{
+				background-position: 0;
+			}
+			20%{
+				background-position: -100% 0;
+			}
+			40%{
+				background-position: -200% 0;
+			}
+			60%{
+				background-position: -300% 0;
+			}
+			80%{
+				background-position: -400% 0;
+			}
+			100%{
+				background-position: -500% 0;
+			}
+		}
+			#bb{
+			width: 140px;
+			height: 140px;
+			background: url('../task4/images/run.png');
+			margin: 200px auto;
+			animation: animate 0.5s steps(13,end) infinite;
+		}
+		@keyframes animate{
+			0%{
+				background-position:0 0;
+			}
+			100%{
+				background-position:-1680px 0;
+			}
+		}
+		#cc{
+			width: 137.2px;
+			height: 156px;
+			background: url('../task4/images/run2.png');
+			margin: 200px auto;
+			animation: xz 1s step-end infinite;
+		}
+		@keyframes xz{
+			0%{
+				background-position: 0 0;
+			}
+			10%{
+				background-position: -100% 0;
+			}
+			20%{
+				background-position: -200% 0;
+			}
+			30%{
+				background-position: -300% 0;
+			}
+			40%{
+				background-position: -400% 0;
+			}
+			50%{
+				background-position: 0 -100%;
+			}
+			60%{
+				background-position: -100% -100%;
+			}
+			70%{
+				background-position: -200% -100%;
+			}
+			80%{
+				background-position: -300% -100%;
+			}
+			90%{
+				background-position: -400% -100%;
+			}
+			100%{
+				background-position: 0 0;
+			}
+		}
+        </style>
+    </head>
+    <body>
+	<div id="box"></div>
+	<hr>
+	<div id="jd"></div>
+	<hr>
+	<div id="kf"></div>
+	<hr>
+	<div id="ww"></div>
+	<hr>
+	<div id="bb"></div>
+	<hr>
+	<div id="cc"></div>
+</body>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小女孩</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 180px;
+			height: 293px;
+			background: url('../shujuwajue/images/walk.jpg');
+			margin: 200px auto;
+			animation: walk 1s step-end infinite;
+		}
+		@keyframes walk{
+			0%{
+				background-position: 0;
+			}
+			20%{
+				background-position: -100% 0;
+			}
+			40%{
+				background-position: -200% 0;
+			}
+			60%{
+				background-position: -300% 0;
+			}
+			80%{
+				background-position: -400% 0;
+			}
+			100%{
+				background-position: -500% 0;
+			}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

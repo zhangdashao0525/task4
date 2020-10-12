@@ -3,237 +3,131 @@
 <head>
 	<meta charset="UTF-8">
 	<title>魔方</title>
-	<style>
-	*{
-		margin: 0;
-		padding: 0;
+	<style type="text/css">
+	@keyframes zhuan{
+		0%{
+			transform:rotateX(-30deg) rotateY(-50deg) rotateZ(-90deg);
+		}
+		100%{
+      	transform:rotateX(30deg) rotateY(50deg) rotateZ(90deg);
+		}
 	}
-	body{
-		max-width: 100%;
-		min-width: 100%;
-		height: 100%;
-		/*background-repeat：repeat-y; */
-		background-size: 100% 100%;/*铺平整个区域*/
-		position: absolute;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	li{/*小方块*/
-		list-style: none;/*去掉标记*/
-	}
-	.box{
-		width: 200px;
-		height: 200px;
-		background-size: 100% 100%;
-		position: absolute;
-		margin-left: 42%;
-		margin-top: 22%;
-		transform-style: preserve-3d;/*元素在3d盒子里进行展示*/
-		transform: rotateX(52deg);/*设置为沿X轴进行52度旋转*/
-		animation: move 5s linear infinite;/*5s匀速重复运动*/
-	}
-	.minbox{
-		width: 100px;
-		height: 100px;
-		position: absolute;
-		left: 50px;
-		top: 30px;
-		transform-style: preserve-3d;
-	}
-	.minbox li{
-		width: 100px;
-		height: 100px;
-		position: absolute;
-		left: 0px;
-		top: 0px;
-	}
-
-	/*小方块颜色设置*/
-	.minbox li:nth-child(1){
-		background: skyblue;
-		transform:translateZ(50px);
-	}
-	.minbox li:nth-child(2){
-		background: orangered;
-		transform:rotateX(180deg) translateZ(50px);
-	}
-	.minbox li:nth-child(3){
-		background: palegreen;
-		transform:rotateX(-90deg) translateZ(50px);
-	}
-	.minbox li:nth-child(4){
-		background: lightgoldenrodyellow;
-		transform:rotateX(90deg) translateZ(50px);
-	}
-	.minbox li:nth-child(5){
-		background:hotpink;
-		transform:rotateY(-90deg) translateZ(50px);
-	}
-	.minbox li:nth-child(6){
-		background:violet;
-		transform:rotateY(90deg) translateZ(50px);
-	}
-	/*大方块颜色设置*/
-	.maxbox li:nth-child(1){
-		background: grey;
-		transform:rotateY(90deg)translateZ(50px);
-	}
-	.maxbox li:nth-child(2){
-	background: grey;
-	transform:translateZ(50px);
-	}
-	.maxbox li:nth-child(3){
-	background: grey;
-	transform:rotateX(-90deg) translateZ(50px);
-	}
-	.maxbox li:nth-child(4){
-	background: grey;
-	transform:rotateX(90deg) translateZ(50px);
-	}
-	.maxbox li:nth-child(5){
-	background: grey;
-	transform:rotateY(-90deg) translateZ(50px);
-	}
-	.maxbox li:nth-child(6){
-	background: grey;
-	transform:rotateY(90deg) translateZ(50px);
-	}
-	.maxbox{
-		width: 800px;
-		height: 400px;
-		position: absolute;
-		left: 0;	
-		top:-20px;
-		transform-style: preserve-3d;
-	}
-	.maxbox li{
-	width: 200px;
-	height: 200px;
-	background: #fff;
-	border:1px solid #ccc;
-	position: absolute;
-	left: 0;
-	top: 0;
-	opacity: 0.2;
-	transition:all 1s ease;/*1s缓慢全部过渡*/
-	}
-	/*鼠标移入时获得效果*/
-	.maxbox li:nth-child(1){
-	transform:translateZ(100px);
-	}
-	.maxbox li:nth-child(2){
-	transform:rotateX(180deg) translateZ(100px);
-	}
-	.maxbox li:nth-child(3){
-	transform:rotateX(-90deg) translateZ(100px);
-	}
-	.maxbox li:nth-child(4){
-	transform:rotateX(90deg) translateZ(100px);
-	}
-	.maxbox li:nth-child(5){
-	transform:rotateY(-90deg) translateZ(100px);
-	}
-	.maxbox li:nth-child(6){
-	transform:rotateY(90deg) translateZ(100px);
-	}
-	.box:hover ol li:nth-child(1){
-	transform:translateZ(300px);
-	width: 400px;
-	height: 400px;
-	opacity: 0.8;/*透明度*/
-	left: -100px;
-	top: -100px;
-}
-.box:hover ol li:nth-child(2){
-	transform:rotateX(180deg) translateZ(300px);
-	width: 400px;
-	height: 400px;
-	opacity: 0.8;
-	left: -100px;
-	top: -100px;
-}
-.box:hover ol li:nth-child(3){
-	transform:rotateX(-90deg) translateZ(300px);
-	width: 400px;
-	height: 400px;
-	opacity: 0.8;
-	left: -100px;
-	top: -100px;
-}
-.box:hover ol li:nth-child(4){
-	transform:rotateX(90deg) translateZ(300px);
-	width: 400px;
-	height: 400px;
-	opacity: 0.8;
-	left: -100px;
-	top: -100px;
-}
-.box:hover ol li:nth-child(5){
-	transform:rotateY(-90deg) translateZ(300px);
-	width: 400px;
-	height: 400px;
-	opacity: 0.8;
-	left: -100px;
-	top: -100px;
-}
-.box:hover ol li:nth-child(6){
-	transform:rotateY(90deg) translateZ(300px);
-	width: 400px;
-	height: 400px;
-	opacity: 0.8;
-	left: -100px;
-	top: -100px;
-}
-/*设置动画在何时如何旋转*/
-@keyframes move{
-	0%{
-    	transform:perspective(1000px) rotateX(0deg)rotateY(0deg)rotateZ(0deg);/*perspctive定义视距*/
-    }
-    10%{
-       	transform:perspective(1000px) rotateX(90deg)rotateY(0deg)rotateZ(0deg);
-    }
-    20%{
-        transform:perspective(1000px) rotateX(90deg)rotateY(0deg)rotateZ(90deg);
-    }
-    30%{
-        transform:perspective(1000px) rotateX(180deg)rotateY(0deg)rotateZ(90deg);
-    }
-    40%{
-        transform:perspective(1000px) rotateX(180deg)rotateY(90deg)rotateZ(90deg);
-    }
-    50%{
-        transform:perspective(1000px) rotateX(270deg)rotateY(90deg)rotateZ(90deg);
-    }
-    60%{
-        transform:perspective(1000px) rotateX(270deg)rotateY(90deg)rotateZ(90deg);
-    }
-    80%{
-        transform:perspective(1000px) rotateX(0deg)rotateY(0deg)rotateZ(0deg);
-    }
-    100%{
-        transform:perspective(1000px) rotateX(0deg)rotateY(0deg)rotateZ(0deg);
-    }
-}
+		.box{
+			width: 800px;
+			height: 800px;
+			position:absolute;
+			left:50%;
+			top:50%;
+			transform:translate(-50%,-50%);
+			perspective:1200px;    /*设置透视值*/
+		}
+		.box1{
+			width: 100%;
+			height: 100%;
+			transform-style:preserve-3d;   /*让子元素有3D变形效果*/
+		  animation:zhuan 2s linear infinite;
+		}
+		.small{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			left:50%;
+			top:50%;
+			margin-left:-100px;
+			margin-top:-100px;
+			background:currentcolor;
+		}
+		.small1{
+      color:red;
+      transform: translateZ(100px);
+		}
+		.small2{
+			color:green;
+			transform:rotateY(180deg) translateZ(100px);
+		}
+		.small3{
+			color:blue;
+			transform:rotateY(90deg) translateZ(100px);
+		}
+	  .small4{
+       color:orange;
+       transform:rotateY(-90deg) translateZ(100px);
+	  }
+	  .small5{
+	  	color:yellow;
+	  	transform:rotateX(90deg) translateZ(100px);
+	  }
+	  .small6{
+	  	color:greenyellow;
+	  	transform:rotateX(-90deg) translateZ(100px);
+	  }
+	  .box:hover .small{
+         box-shadow:0 0 20px currentcolor;
+	  }
+	  .big {
+	  	width: 400px;
+	  	height: 400px;
+	  	position:absolute;
+			left:50%;
+			top:50%;
+			margin-left:-200px;
+			margin-top:-200px;
+			background:rgba(120,120, 120, .2);
+	  }
+		.big1{
+      transform: translateZ(200px);
+		}
+		.big2{
+			transform:rotateY(180deg) translateZ(200px);
+		}
+		.big3{
+			transform:rotateY(90deg) translateZ(200px);
+		}
+	  .big4{
+       transform:rotateY(-90deg) translateZ(200px);
+	  }
+	  .big5{
+	  	transform:rotateX(90deg) translateZ(200px);
+	  }
+	  .big6{
+	  	transform:rotateX(-90deg) translateZ(200px);
+	  }
+		.box:hover .big1{
+      transform: translateZ(240px);
+		}
+		.box:hover .big2{
+			transform:rotateY(180deg) translateZ(240px);
+		}
+		.box:hover .big3{
+			transform:rotateY(90deg) translateZ(240px);
+		}
+	  .box:hover .big4{
+       transform:rotateY(-90deg) translateZ(240px);
+	  }
+	  .box:hover .big5{
+	  	transform:rotateX(90deg) translateZ(240px);
+	  }
+	  .box:hover .big6{
+	  	transform:rotateX(-90deg) translateZ(240px);
+	  }
 	</style>
 </head>
 <body>
 	<div class="box">
-		<ul class="minbox">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-		<ol class="maxbox">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ol>
+	  <div class="box1">
+		  <div class="small small1"></div>
+		  <div class="small small2"></div>
+		  <div class="small small3"></div>
+		  <div class="small small4"></div>
+		  <div class="small small5"></div>
+		  <div class="small small6"></div>
+		  <div class="big big1"></div>
+		  <div class="big big2"></div>
+		  <div class="big big3"></div>
+		  <div class="big big4"></div>
+		  <div class="big big5"></div>
+		  <div class="big big6"></div>
+	</div>
 	</div>
 </body>
 </html>
